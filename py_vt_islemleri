@@ -1,0 +1,38 @@
+# -*- coding:utf-8 -*-
+
+import sqlite3
+
+vt = sqlite3.connect('ogrenci.db')
+im = vt.cursor()
+
+def olustur():
+    im.execute('CREATE TABLE kullanicilar (ad,soyad,no,vize,final,ortalama)')
+
+    # im.execute('CREATE TABLE IF NOT EXISTS kullanicilar (ad,soyad,no,vize,final,ortalama)') -> YOKSA OLUŞTUR
+
+def ekle():
+
+    ad = input('Adı: ')
+    soyad = input('Adı: ')
+    no = int(input('Not: '))
+    vize = float(input('Vize: '))
+    final = float(input('Final: '))
+    ortalama = vize*0.4 + final*0.6
+
+    im.execute('INSERT INTO kullanicilar VALUES (?,?,?,?,?,?)', (ad,soyad,no,vize,final,ortalama))
+
+    vt.commit()
+
+def goster():
+    im.execute('SELECT * FROM kullanicilar')
+
+    goster = im.fetchall()
+
+    print('------#------')
+
+    for kayitlar in goster:
+        print( kayitlar )
+
+# olustur()
+ekle()
+goster()
