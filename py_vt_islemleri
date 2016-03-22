@@ -7,7 +7,6 @@ im = vt.cursor()
 
 def olustur():
     im.execute('CREATE TABLE kullanicilar (ad,soyad,no,vize,final,ortalama)')
-
     # im.execute('CREATE TABLE IF NOT EXISTS kullanicilar (ad,soyad,no,vize,final,ortalama)') -> YOKSA OLUŞTUR
 
 def ekle():
@@ -33,6 +32,13 @@ def goster():
     for kayitlar in goster:
         print( kayitlar )
 
+def sil():
+    isim = input('Silinecek İsim: ')
+    im.execute('DELETE FROM kullanicilar WHERE ad=(?)', (isim,))
+    vt.commit()
+
 # olustur()
-ekle()
+# ekle()
+goster()
+sil()
 goster()
