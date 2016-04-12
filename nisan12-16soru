@@ -1,0 +1,123 @@
+# -*- coding:utf-8 -*-
+
+import sqlite3
+
+vt = sqlite3.connect('vt92.db')
+im = vt.cursor()
+
+def olustur():
+    im.execute('CREATE TABLE IF NOT EXISTS tablo (urun_no,malzeme_adi,kategori,adet,fiyat,kdv,sehir)')
+
+def ekle():
+
+    gir_malzeme_adi = input('Malzeme Adı: ')
+    gir_kategori = input('Kategori: ')
+    gir_adet = int(input('Adet: '))
+    gir_fiyat = int(input('Fiyat: '))
+    gir_kdv = int(input('KDV: '))
+    gir_sehir = input('Şehir: ')
+
+    # ------------------------ SON ID ------------------------ #
+
+    im.execute('SELECT * FROM tablo')
+    sonidbulma = im.fetchall()
+
+    gir_urun_no = 0
+
+    for sonid in sonidbulma:
+        gir_urun_no = sonid[0]
+
+    gir_urun_no = gir_urun_no + 1
+
+    # ------------------------ SON ID ------------------------ #
+
+    im.execute('INSERT INTO tablo VALUES (?,?,?,?,?,?,?)', (gir_urun_no,gir_malzeme_adi,gir_kategori,gir_adet,gir_fiyat,gir_kdv,gir_sehir))
+
+    vt.commit()
+
+def listele(secim):
+
+    im.execute('SELECT * FROM tablo')
+    goster = im.fetchall()
+
+    for kayitlar in goster:
+
+        tutar = kayitlar[4] * kayitlar[3]
+        toplam_tutar = tutar + (tutar * kayitlar[5] / 100)
+        # print("Tutar: ", tutar)
+        # print("Toplam Tutar: ", toplam_tutar)
+
+        if ( secim == 1 ):
+
+            if ( tutar > 50 ):
+                print( kayitlar[1] )
+
+        elif ( secim == 2 ):
+
+            im.execute('DELETE FROM tablo WHERE malzeme_adi="Kasa 1"')
+            vt.commit()
+
+        elif ( secim == 3 ):
+
+            im.execute('UPDATE tablo SET urun_no=125 WHERE ( adet*fiyat > 99 AND adet*fiyat < 501 ) OR malzeme_adi LIKE "M%"')
+            vt.commit()
+
+    if ( secim == 5 ):
+
+        im.execute('SELECT * FROM tablo')
+        goster5 = im.fetchall()
+
+        maxDeger = 0
+
+        for kayitlar5 in goster5:
+            tutar5 = kayitlar5[4] * kayitlar5[3]
+            toplam_tutar_5 = tutar5 + (tutar5 * kayitlar5[5] / 100)
+
+            if ( toplam_tutar_5 > maxDeger ):
+                maxDeger = toplam_tutar_5
+
+        im.execute('UPDATE tablo SET urun_no=555 WHERE ((adet*fiyat) + (adet*fiyat*kdv/100)) = (?)', (maxDeger,))
+        vt.commit()
+
+    elif ( secim == 6 ):
+
+        im.execute('UPDATE tablo SET fiyat=fiyat + 50 WHERE fiyat > 300')
+        vt.commit()
+
+    elif ( secim == 7 ):
+
+        im.execute('SELECT * FROM tablo')
+        goster7 = im.fetchall()
+
+        for kayitlar7 in goster7:
+            print(kayitlar7)
+
+    elif ( secim == 8 ):
+
+        im.execute('SELECT * FROM tablo WHERE sehir LIKE "a%" OR sehir LIKE "%K_"')
+        goster8 = im.fetchall()
+
+        for kayitlar8 in goster8:
+            print(kayitlar8)
+
+    elif ( secim == 9 ):
+
+        im.execute('SELECT * FROM tablo')
+        goster5 = im.fetchall()
+
+        maxDeger = 0
+
+        for kayitlar5 in goster5:
+            tutar5 = kayitlar5[4] * kayitlar5[3]
+            toplam_tutar_5 = tutar5 + (tutar5 * kayitlar5[5] / 100)
+
+            if ( toplam_tutar_5 > maxDeger ):
+                maxDeger = toplam_tutar_5
+
+        im.execute('SELECT *, AS "sonuclar" FROM tablo WHERE ((adet*fiyat) + (adet*fiyat*kdv/100)) = (?)', (maxDeger,))
+        goster9 = im.fetchall()
+        for kayitlar9 in goster9:
+            print(kayitlar9[1])
+
+olustur()
+listele(9)
