@@ -1,0 +1,33 @@
+#-*- coding: utf-8 -*-
+
+from tkinter import *
+
+pencere = Tk()
+pencere.title('İlk Uygulamam')
+pencere.geometry('400x400+50+50')
+pencere.resizable(False, False) # boyut değişimini engelle
+
+listelerim = Listbox()
+listelerim.pack()
+
+menu = Menu()
+pencere.config(menu=menu)
+
+dosya = Menu(menu, tearoff=0)
+menu.add_cascade(label="Dosya", menu = dosya)
+dosya.add_command(label="Aç")
+dosya.add_command(label="Farklı Kaydet")
+dosya.add_command(label="Kaydet")
+dosya.add_command(label="Çıkış", command=pencere.quit)
+
+duzenle = Menu(menu, tearoff=0)
+menu.add_cascade(label="Düzenle", menu = duzenle)
+duzenle.add_command(label="Resimleri Düzenle")
+duzenle.add_command(label="Ekranı Düzenle")
+duzenle.add_command(label="Kaydetme Yerini Düzenlr")
+
+buton = Button()
+buton.config(text="BU BUTON")
+buton.pack()
+
+mainloop()
