@@ -24,7 +24,12 @@ duzenle = Menu(menu, tearoff=0)
 menu.add_cascade(label="Düzenle", menu = duzenle)
 duzenle.add_command(label="Resimleri Düzenle")
 duzenle.add_command(label="Ekranı Düzenle")
-duzenle.add_command(label="Kaydetme Yerini Düzenlr")
+duzenle.add_command(label="Kaydetme Yerini Düzenle")
+
+yeni = Menu(dosya, tearoff=0)
+dosya.add_cascade(label="Yeni", menu=yeni)
+yeni.add_command(label="Yeninin Altında")
+yeni.add_command(label="Yeninin Altında 2")
 
 buton = Button()
 buton.config(text="BU BUTON")
