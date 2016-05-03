@@ -6,16 +6,24 @@ from tkinter import messagebox
 from tkinter import simpledialog
 
 def adana():
-    print( 'fs' )
     # messagebox.showinfo('Titlesi', 'Burası mesajdır')
     # messagebox.showwarning('Titlesi', 'Burası mesajdır')
     # messagebox.showerror('Titlesi', 'Burası mesajdır')
+
+    #evet = messagebox.askyesno('asyesnodur','Devam!')
+    #print(evet)
+
+    #okey = messagebox.askyesnocancel('titletabi', 'Devam mı?')
+    #print(okey)
+
+    isim = simpledialog.askstring('titletabi', 'Devam mı?')
+    print(isim)
 
 pencere = Tk()
 pencere.title('İlk Uygulamam')
 pencere.geometry('400x400+50+50')
 pencere.resizable(False, False) # boyut değişimini engelle
-# pencere.withdraw() - gizlemeye yarar
+# pencere.withdraw()
 
 buton = Button()
 kaydetIcon = PhotoImage(file='save.png')
