@@ -1,0 +1,25 @@
+#-*- coding: utf-8 -*-
+
+from tkinter import *
+
+from tkinter import messagebox
+from tkinter import simpledialog
+
+def adana():
+    print( 'fs' )
+    # messagebox.showinfo('Titlesi', 'Burası mesajdır')
+    # messagebox.showwarning('Titlesi', 'Burası mesajdır')
+    # messagebox.showerror('Titlesi', 'Burası mesajdır')
+
+pencere = Tk()
+pencere.title('İlk Uygulamam')
+pencere.geometry('400x400+50+50')
+pencere.resizable(False, False) # boyut değişimini engelle
+# pencere.withdraw() - gizlemeye yarar
+
+buton = Button()
+kaydetIcon = PhotoImage(file='save.png')
+buton.config(text="Kaydet", border=0, image=kaydetIcon, compound='left', command=adana)
+buton.pack(pady=(10,10))
+
+mainloop()
