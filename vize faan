@@ -1,0 +1,133 @@
+#-*- coding: utf-8 -*-
+
+from tkinter import *
+
+kacDefa = 5
+
+def funcRadio():
+    gelen = var.get()
+
+    if ( kacDefa == 5 ):
+
+        if ( gelen == 1 ):
+
+            global kacDefa
+            kacDefa = 6
+
+            yeniOrtalama = ortalamaGiris.get()
+            yeniOrtalama = float(yeniOrtalama)
+
+            yeniOrtalama = yeniOrtalama + 10.0
+
+            ortalamaGiris.delete(0, END)
+            ortalamaGiris.insert(END, yeniOrtalama)
+
+def funcGit():
+    vize = vizeGiris.get()
+    final = finalGiris.get()
+
+    if ( vize != '' and final != '' ):
+        vize = int(vize)
+        final = int(final)
+        ortalama = (vize * 0.4) + (final * 0.6)
+    else:
+        ortalama = 0
+
+    if ( vize < 0 or vize > 100 ):
+        from tkinter import messagebox
+        messagebox.showerror('Hata!','Lütfen vize ve final notu 0 ile 100 arasında girin!')
+
+    if ( final < 0 or final > 100 ):
+        from tkinter import messagebox
+        messagebox.showerror('Hata!','Lütfen vize ve final notu 0 ile 100 arasında girin!')
+
+    if ( ortalama > 50 ):
+        durum = 'Başarılı'
+    else:
+        durum = 'Başarısız'
+
+    ortalamaGiris.delete(0, END)
+    ortalamaGiris.insert(END, ortalama)
+
+    durumGiris.delete(0, END)
+    durumGiris.insert(END, durum)
+
+pencere = Tk()
+pencere.title('İlk Uygulamam')
+pencere.geometry('400x400+50+50')
+pencere.resizable(False, False)
+
+satir_1 = Frame(pencere)
+satir_1.pack(side=TOP, padx=0)
+
+satir_2 = Frame(pencere)
+satir_2.pack(side=TOP, padx=0)
+
+satir_3 = Frame(pencere)
+satir_3.pack(side=TOP, padx=0)
+
+satir_4 = Frame(pencere)
+satir_4.pack(side=TOP, padx=0)
+
+satir_45 = Frame(pencere)
+satir_45.pack(side=TOP, padx=0)
+
+satir_5 = Frame(pencere)
+satir_5.pack(side=TOP, padx=0)
+
+## Vize
+
+vizeMetin = Label(satir_1)
+vizeMetin.config(text='Vize:', bg='#2ecc71', fg='#fff', height=2, width=10)
+vizeMetin.pack(padx=10, pady=(10,10), side=LEFT)
+
+vizeGiris = Entry(satir_1)
+vizeGiris.config(bg='#e5e5e5', border=0, justify='center', width=100, font = "arial 24 normal", fg='#f39c12')
+vizeGiris.pack(padx=(0,10), pady=(10,10), side=LEFT)
+
+## Final
+
+finalMetin = Label(satir_2)
+finalMetin.config(text='Final:', bg='#2ecc71', fg='#fff', height=2, width=10)
+finalMetin.pack(padx=10, pady=(0,10), side=LEFT)
+
+finalGiris = Entry(satir_2)
+finalGiris.config(bg='#e5e5e5', border=0, justify='center', width=100, font = "arial 24 normal", fg='#f39c12')
+finalGiris.pack(padx=(0,10), pady=(0,10), side=LEFT)
+
+## Ortalama
+
+ortalamaMetin = Label(satir_3)
+ortalamaMetin.config(text='Ortalama:', bg='#2ecc71', fg='#fff', height=2, width=10)
+ortalamaMetin.pack(padx=10, pady=(0,10), side=LEFT)
+
+ortalamaGiris = Entry(satir_3)
+ortalamaGiris.config(bg='#e5e5e5', border=0, justify='center', width=100, font = "arial 24 normal", fg='#f39c12')
+ortalamaGiris.pack(padx=(0,10), pady=(0,10), side=LEFT)
+
+## Durum
+
+durumMetin = Label(satir_4)
+durumMetin.config(text='Durum:', bg='#2ecc71', fg='#fff', height=2, width=10)
+durumMetin.pack(padx=10, pady=(0,10), side=LEFT)
+
+durumGiris = Entry(satir_4)
+durumGiris.config(bg='#e5e5e5', border=0, justify='center', width=100, font = "arial 24 normal", fg='#f39c12')
+durumGiris.pack(padx=(0,10), pady=(0,10), side=LEFT)
+
+## Buton
+
+submitButon = Button(satir_5)
+icon = PhotoImage(file='calc.png')
+submitButon.config(text='Hesapla', image=icon, compound='left', command=funcGit, bg='#3498db', fg='#fff', width=1000, border=0, height=40, cursor='cross', activebackground='#2980b9', activeforeground='#f1c40f')
+submitButon.pack(padx=10, pady=(0,10))
+
+## Radio
+
+var = IntVar()
+
+radio = Radiobutton(satir_45)
+radio.config(text='Arttır', command=funcRadio, variable=var, value=1)
+radio.pack(padx=10, pady=(0,10))
+
+mainloop()
