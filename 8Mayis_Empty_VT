@@ -1,0 +1,36 @@
+# -*- coding:utf-8 -*-
+
+import sqlite3
+
+vt = sqlite3.connect('8mayisvt5.db')
+im = vt.cursor()
+
+def olustur():
+    im.execute('CREATE TABLE IF NOT EXISTS tablo (indis INTEGER,malzeme_adi,fiyat INTEGER,sehir)')
+
+def ekle():
+
+    gir_indis = int(input('İndis: '))
+    gir_malze = input('Malzeme Adı: ')
+    gir_fiyat = int(input('Fiyat: '))
+    gir_sehir = input('Şehir: ')
+
+    im.execute('INSERT INTO tablo VALUES (?,?,?,?)', (gir_indis,gir_malze,gir_fiyat,gir_sehir))
+
+    vt.commit()
+
+def listele():
+
+    im.execute('SELECT * FROM tablo')
+    goster = im.fetchall()
+
+    for kayitlar in goster:
+        print( kayitlar[1] )
+
+def guncelle():
+    im.execute('UPDATE tablo SET malzeme_adi="Su Torbası" WHERE indis=2')
+    vt.commit()
+
+'''olustur()'''
+guncelle()
+listele()
