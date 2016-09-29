@@ -9,23 +9,24 @@ int main(){
     
     printf("\n");
     
-    for ( i = 1; i < 10; i++ ){
+    for ( a = 1; a < 10; a++ ){
         
         for ( b = 0; b < 10; b++ ){
             
             for ( c = 0; c < 10; c++ ){
                 
-                int ilksayi[] = {i, b, c};
-                int sonsayi[] = {c, c, c};
-                
-                int tekdegerA = (ilksayi[0] * 100 ) + (ilksayi[1] * 10) + ilksayi[2];
-                int tekdegerC = (sonsayi[0] * 100 ) + (sonsayi[1] * 10) + sonsayi[2];
+                int tekdegerA = (a * 100 ) + (b * 10) + c;
+                int tekdegerC = (c * 100 ) + (c * 10) + c;
                 
                 if ( ( tekdegerA * 3) == tekdegerC ){
                 
                    printf("Sayi ABC -- : %d \n\n", tekdegerA);
                    
-                   printf("Sayi C -----: %d \n\n", tekdegerC);
+                   printf("Sayi CCC ---: %d \n\n", tekdegerC);
+                   
+                   printf("Sayi A -----: %d \n\n", a);
+                   printf("Sayi B -----: %d \n\n", b);
+                   printf("Sayi C -----: %d \n\n", c);
                    
                    break;
                      
@@ -37,7 +38,7 @@ int main(){
         
     }
     
-    scanf("%d", a);
+    scanf("%d", i);
     
     return 0;
     
