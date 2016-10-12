@@ -3,9 +3,20 @@
 #include <stdio.h>
 #include <locale.h>
 
+void raSayi();
+
 int main(){
 	
 	setlocale(LC_ALL, "Turkish"); // Türkçe karakterleri destekler.
+	
+	raSayi();
+	
+	printf("\n\n"); system("pause");
+	return 0;
+	
+}
+
+void raSayi(){
 	
 	srand(time(NULL));
 	
@@ -15,7 +26,7 @@ int main(){
 	int kacinciDeneme = 0;
 	
 	printf("\n");
-	
+
 	while ( 1 ){
 		
 		kacinciDeneme = kacinciDeneme + 1;
@@ -37,21 +48,31 @@ int main(){
 			
 			printf("\n ** ** ** ** ** ** ** ** TEBRİKLER \n");
 			
-			printf("\n Sayıyı %d. denemede buldunuz. \n", kacinciDeneme);
+			printf("\n Sayıyı %d. denemede buldunuz. \n\n", kacinciDeneme);
 			
-			break;
+			printf("\n TEKRAR OYNAMAK İSTER MİSİNİZ? \n");
+			printf("\n [1] - EVET \n");
+			printf("\n [2] - HAYIR \n");
+			
+			int tekrar;
+			
+			printf("\n Bir seçim yapın: ");
+			scanf("%d", &tekrar);
+			
+			if ( tekrar == 1 ){
+				
+				system("cls");
+				
+				raSayi();
+				
+			}else{
+				
+				break;
+				
+			}
 			
 		}
 		
 	}
-	
-	printf("\n\n"); system("pause");
-	return 0;
-	
-}
-
-void rasgeleSayi(int hata){
-
-	
 
 }
