@@ -1,0 +1,52 @@
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <locale.h>
+
+void xoxFunc();
+
+int main(){
+	
+	setlocale(LC_ALL, "Turkish"); // Türkçe karakterleri destekler.
+	
+	xoxFunc();
+	
+	printf("\n\n"); system("pause");
+	return 0;
+	
+}
+
+void xoxFunc(){
+	
+	int d;
+	
+	char satir1[3]; // Kaç adet ise, o sayı.
+    satir1[0] = 'X';
+    satir1[1] = 'O';
+    satir1[2] = 'X';
+    
+    char satir2[3]; // Kaç adet ise, o sayı.
+    satir2[0] = 'B';
+    satir2[1] = 'O';
+    satir2[2] = 'X';
+    
+    char satir3[3]; // Kaç adet ise, o sayı.
+    satir3[0] = 'C';
+    satir3[1] = 'O';
+    satir3[2] = 'X';
+    
+    // printf("Bir karakter: %c \n", satir1[1]);
+    
+    int secimSatir;
+    
+    printf("\n KAÇINCI SATIRA EKLEMEK İSTERSİNİZ? \n");
+	printf("\n Bir seçim yapın: ");
+	scanf("%d", &secimSatir);
+	
+	if ( secimSatir == 1 || secimSatir == 2 || secimSatir == 3 ){
+		
+		
+		
+	}
+
+}
