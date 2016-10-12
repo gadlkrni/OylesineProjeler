@@ -11,12 +11,14 @@ int main(){
 	
 	int sayimiz = 1 + rand() % 100;
 	
-	int dongu;
 	int girilenSayi;
+	int kacinciDeneme = 0;
 	
 	printf("\n");
 	
-	while ( dongu ){
+	while ( 1 ){
+		
+		kacinciDeneme = kacinciDeneme + 1;
 		
 		// printf("Sayi: %d \n\n", sayimiz);
 		
@@ -33,7 +35,9 @@ int main(){
 			
 		}else if ( girilenSayi == sayimiz ){
 			
-			printf("\n ** ** ** ** ** ** ** ** TEBRİKLER \n\n");
+			printf("\n ** ** ** ** ** ** ** ** TEBRİKLER \n");
+			
+			printf("\n Sayıyı %d. denemede buldunuz. \n", kacinciDeneme);
 			
 			break;
 			
