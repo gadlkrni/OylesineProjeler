@@ -1,0 +1,53 @@
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <locale.h>
+
+int main(){
+	
+	setlocale(LC_ALL, "Turkish"); // Türkçe karakterleri destekler.
+	
+	srand(time(NULL));
+	
+	int sayimiz = 1 + rand() % 100;
+	
+	int dongu;
+	int girilenSayi;
+	
+	printf("\n");
+	
+	while ( dongu ){
+		
+		// printf("Sayi: %d \n\n", sayimiz);
+		
+		printf(" Sayıyı tahmin edin: ");
+		scanf("%d", &girilenSayi);
+		
+		if ( girilenSayi > sayimiz ){
+			
+			printf("\n -- -- -- -- -- -- -- -- AŞAĞI \n\n");
+			
+		}else if ( girilenSayi < sayimiz ){
+			
+			printf("\n -- -- -- -- -- -- -- -- YUKARI \n\n");
+			
+		}else if ( girilenSayi == sayimiz ){
+			
+			printf("\n ** ** ** ** ** ** ** ** TEBRİKLER \n\n");
+			
+			break;
+			
+		}
+		
+	}
+	
+	printf("\n\n"); system("pause");
+	return 0;
+	
+}
+
+void rasgeleSayi(int hata){
+
+	
+
+}
